@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOOT49's GitHub Page</title>
+    <style>
+        body {
+            background-color: rgb(25, 25, 25); /* Changed background color */
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3em;
+            position: relative;
+            top: -100px;
+            opacity: 0;
+            animation: dropDown 2s forwards;
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #ffffff, #0000FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            transition: background-position 0.1s, color 1s ease-in-out;
+        }
+
+        @keyframes dropDown {
+            to {
+                top: 0;
+                opacity: 1;
+            }
+        }
+
+        .github-link {
+            margin-top: 20px;
+        }
+
+        .github-link img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hi! I'm <span class="gradient-text" id="joot49">JOOT49</span></h1>
+    <div class="github-link">
+        <a href="https://github.com/JOOT49" target="_blank">
+            <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="GitHub Logo">
+        </a>
+    </div>
+
+    <script>
+        const gradientText = document.getElementById('joot49');
+
+        function animateGradient() {
+            let step = 0;
+            const gradientChange = () => {
+                const x = Math.sin(step / 100) * 50 + 50;
+                const y = Math.cos(step / 100) * 50 + 50;
+                gradientText.style.backgroundPosition = `${x}% ${y}%`;
+                step++;
+                requestAnimationFrame(gradientChange);
+            };
+            gradientChange();
+        }
+
+        animateGradient();
+
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth * 100;
+            const y = e.clientY / window.innerHeight * 100;
+            gradientText.style.backgroundPosition = `${x}% ${y}%`;
+        });
+    </script>
+</body>
+</html>
